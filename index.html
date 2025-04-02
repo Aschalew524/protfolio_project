@@ -3,32 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Aschalew Abayneh - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>My Portfolio</h1>
-    </header>
-    <div class="container">
-        <section>
-            <img src="assets/images/profile.jpg" alt="Profile Picture" class="profile-img">
-            <h2>Your Name</h2>
-            <p>Web Developer | Designer | Freelancer</p>
-        </section>
-        <section>
-            <h2>About Me</h2>
-            <p>Hello! I'm a passionate web developer who loves creating beautiful and functional websites.</p>
-        </section>
-        <section>
-            <h2>Contact</h2>
-            <div class="social-links">
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">Twitter</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Aschalew Abayneh</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Aschalew Abayneh</span></h1>
+            <p class="typing-text">I'm a <span class="typed"></span></p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary">View My Work</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
             </div>
-        </section>
-    </div>
-    <script src="assets/js/script.js"></script>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a passionate Full Stack Mobile Developer and Backend Developer with expertise in creating beautiful and functional mobile applications. I love turning ideas into reality through code and building scalable backend solutions.</p>
+                <div class="skills">
+                    <h3>Skills</h3>
+                    <div class="skill-tags">
+                        <span>Flutter</span>
+                        <span>Dart</span>
+                        <span>Node.js</span>
+                        <span>JavaScript</span>
+                        <span>MongoDB</span>
+                        <span>REST APIs</span>
+                        <span>Git</span>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="assets/ecom.webp" alt="Ecommerce App">
+                <div class="project-info">
+                    <h3>Ecommerce Mobile App</h3>
+                    <p>A full-featured ecommerce mobile application built with Flutter.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Aschalew524/-2024-internship-mobile-tasks/tree/main/on-boarding/Ecommerce" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="assets/carrental.webp" alt="Car Rental App">
+                <div class="project-info">
+                    <h3>Car Rental App</h3>
+                    <p>A mobile application for car rental services built with Flutter.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Aschalew524/car_rental_app_project" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="assets/contact.jpg" alt="Contacts Backend">
+                <div class="project-info">
+                    <h3>Contacts Backend</h3>
+                    <p>A RESTful API backend for contact management built with Node.js.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Aschalew524/mycontacts-backend" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>aschalewabaynehh@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Ethiopia</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit" class="btn primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/Aschalew524" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2024 Aschalew Abayneh. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-</html>
+</html> 
