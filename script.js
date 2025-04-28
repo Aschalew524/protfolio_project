@@ -92,12 +92,24 @@ document.querySelectorAll('section').forEach(section => {
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        // FormSubmit will handle the submission
-        // No need for custom handling
+        e.preventDefault();
+        // Form validation
+        const name = contactForm.querySelector('input[type="text"]').value;
+        const email = contactForm.querySelector('input[type="email"]').value;
+        const message = contactForm.querySelector('textarea').value;
+        
+        if (name && email && message) {
+            // Here you would typically send the form data to a server
+            // For demonstration purposes, just show an alert
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        } else {
+            alert('Please fill in all fields');
+        }
     });
 }
 
-// Add CSS animation for fade-in effect
+// Add styles for toggle animation
 const style = document.createElement('style');
 style.textContent = `
     @keyframes navLinkFade {
@@ -134,4 +146,38 @@ style.textContent = `
         transform: translateY(0);
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Project card hover effects
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+        card.style.boxShadow = '0 15px 25px rgba(0, 0, 0, 0.15)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+        card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+    });
+});
+
+// Update page title with current section
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= (sectionTop - sectionHeight/3)) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    if (currentSection) {
+        document.title = `Aschalew Abayneh | ${currentSection.charAt(0).toUpperCase() + currentSection.slice(1)}`;
+    } else {
+        document.title = 'Aschalew Abayneh - Portfolio';
+    }
+});
