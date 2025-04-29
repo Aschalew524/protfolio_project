@@ -25,9 +25,7 @@ built with pure HTML, CSS, and JavaScript. This portfolio showcases my work as a
 - JavaScript (ES6+)
   - DOM Manipulation
   - Event Listeners
-  - LocalStorage API
-  - Intersection Observer API
-- Font Awesome Icons
+  - Font Awesome Icons
 
 ## Project Structure
 
