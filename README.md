@@ -1,4 +1,4 @@
-# Aschalew's Portfolio Website
+# My Portfolio Website
 
 built with pure HTML, CSS, and JavaScript. This portfolio showcases my work as a Full Stack Mobile Developer and Backend Developer.
 
