@@ -1,3 +1,35 @@
+// Theme Toggle
+const themeToggle = document.querySelector('.theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+// Theme toggle click handler
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+});
+
+// Update theme icon
+function updateThemeIcon(theme) {
+    if (theme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+}
+
 // Mobile Navigation Toggle
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav-links');
@@ -92,24 +124,12 @@ document.querySelectorAll('section').forEach(section => {
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Form validation
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        if (name && email && message) {
-            // Here you would typically send the form data to a server
-            // For demonstration purposes, just show an alert
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        } else {
-            alert('Please fill in all fields');
-        }
+        // FormSubmit will handle the submission
+        // No need for custom handling
     });
 }
 
-// Add styles for toggle animation
+// Add CSS animation for fade-in effect
 const style = document.createElement('style');
 style.textContent = `
     @keyframes navLinkFade {
