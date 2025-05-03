@@ -54,7 +54,7 @@ burger.addEventListener('click', () => {
 
 // Typing Animation
 const typed = document.querySelector('.typed');
-const words = ['Full Stack Mobile Developer', 'Backend Developer', 'Flutter Expert'];
+const words = [ 'Backend Developer', 'CSE student', 'A2SVian','Mobile app Developer',  'Flutter Expert'];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -102,7 +102,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll Animation for Elements
 const observerOptions = {
     threshold: 0.1
 };
@@ -115,20 +114,61 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
+
 // Observe all sections
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
+
 // Form Submission
 const contactForm = document.querySelector('.contact-form');
+
+// Success and Error Popups
+const successPopup = document.createElement('div');
+successPopup.classList.add('popup', 'success-popup');
+successPopup.textContent = "Message sent!";
+
+const errorPopup = document.createElement('div');
+errorPopup.classList.add('popup', 'error-popup');
+errorPopup.textContent = "Something went wrong. Please try again.";
+
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        // FormSubmit will handle the submission
-        // No need for custom handling
+        e.preventDefault();
+
+        // Clear any previous popups
+        successPopup.remove();
+        errorPopup.remove();
+
+        fetch('https://script.google.com/macros/s/AKfycbzNdr39SEgmMVEVyS1BhlKprYJLhAIDlEBhJEy8uTy3pmD9_lJH2NdlwxbJygWECxZX/exec', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: contactForm.name.value,
+                email: contactForm.email.value,
+                message: contactForm.message.value
+            }),
+            mode: 'no-cors' // <-- only for testing
+        })
+        .then(() => {
+            // Display success popup
+            document.body.insertBefore(successPopup, document.body.firstChild);
+            setTimeout(() => {
+                successPopup.remove();
+            }, 3000);  // Auto remove after 3 seconds
+            contactForm.reset();
+        })
+        .catch(err => {
+            // Display error popup
+            document.body.insertBefore(errorPopup, document.body.firstChild);
+            setTimeout(() => {
+                errorPopup.remove();
+            }, 3000);  // Auto remove after 3 seconds
+            console.error('Error:', err);
+        });
     });
 }
-
 // Add CSS animation for fade-in effect
 const style = document.createElement('style');
 style.textContent = `
