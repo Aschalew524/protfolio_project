@@ -3,11 +3,9 @@ const themeToggle = document.querySelector('.theme-toggle');
 const themeIcon = themeToggle.querySelector('i');
 
 // Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-}
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
 
 // Theme toggle click handler
 themeToggle.addEventListener('click', () => {
