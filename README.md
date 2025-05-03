@@ -1,6 +1,6 @@
 # My Portfolio Website
 
-built with pure HTML, CSS, and JavaScript. This portfolio showcases my work as a Full Stack Mobile Developer and Backend Developer.
+built with pure HTML, CSS, and JavaScript. 
 
 ## Features
 
