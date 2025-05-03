@@ -119,17 +119,13 @@ document.querySelectorAll('section').forEach(section => {
 });
 
 
+
 // Form Submission
 const contactForm = document.querySelector('.contact-form');
 
-// Success and Error Popups
 const successPopup = document.createElement('div');
 successPopup.classList.add('popup', 'success-popup');
 successPopup.textContent = "Message sent!";
-
-const errorPopup = document.createElement('div');
-errorPopup.classList.add('popup', 'error-popup');
-errorPopup.textContent = "Something went wrong. Please try again.";
 
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -137,7 +133,6 @@ if (contactForm) {
 
         // Clear any previous popups
         successPopup.remove();
-        errorPopup.remove();
 
         fetch('https://script.google.com/macros/s/AKfycbzNdr39SEgmMVEVyS1BhlKprYJLhAIDlEBhJEy8uTy3pmD9_lJH2NdlwxbJygWECxZX/exec', {
             method: 'POST',
@@ -147,26 +142,25 @@ if (contactForm) {
                 email: contactForm.email.value,
                 message: contactForm.message.value
             }),
-            mode: 'no-cors' // <-- only for testing
+            mode: 'no-cors' 
         })
         .then(() => {
             // Display success popup
-            document.body.insertBefore(successPopup, document.body.firstChild);
+            document.body.appendChild(successPopup);
+            successPopup.style.opacity = '1';
             setTimeout(() => {
-                successPopup.remove();
-            }, 3000);  // Auto remove after 3 seconds
+                successPopup.style.opacity = '0';
+                setTimeout(() => successPopup.remove(), 300); // Remove after fade-out
+            }, 3000); 
             contactForm.reset();
         })
         .catch(err => {
-            // Display error popup
-            document.body.insertBefore(errorPopup, document.body.firstChild);
-            setTimeout(() => {
-                errorPopup.remove();
-            }, 3000);  // Auto remove after 3 seconds
             console.error('Error:', err);
         });
     });
-}
+} 
+
+
 // Add CSS animation for fade-in effect
 const style = document.createElement('style');
 style.textContent = `
